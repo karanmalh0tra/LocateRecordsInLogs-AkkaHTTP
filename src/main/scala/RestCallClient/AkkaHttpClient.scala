@@ -12,11 +12,13 @@ import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
 object AkkaHttpClient {
+  /* intialize logger and configs */
   val logger: Logger = CreateLogger(classOf[AkkaHttpClient.type])
   val config: Config = ObtainConfigReference("REST") match {
     case Some(value) => value
     case None => throw new RuntimeException("Cannot obtain a reference to the config data.")
   }
+  /* fetch api gateway url, Time and deltaTime from the configs */
   val URL: String = config.getString("REST.rest_url")
   val T: String = config.getString("REST.time")
   val dT: String = config.getString("REST.delta_time")
@@ -24,12 +26,16 @@ object AkkaHttpClient {
   implicit val system: ActorSystem = ActorSystem() // Akka actors
   import system.dispatcher // "thread pool"
 
+
   def sendRequest(): Unit = {
+    /* form the GET request to be sent to the API Gateway */
     val request = HttpRequest(
       method = HttpMethods.GET,
       uri = s"$URL?T=$T&dT=$dT"
     )
+    /* send the request to the API Gateway */
     val responseFuture: Future[HttpResponse] = Http().singleRequest(request)
+    /* Process the response of the API Gateway */
     responseFuture
       .onComplete {
         case Success(res) =>
