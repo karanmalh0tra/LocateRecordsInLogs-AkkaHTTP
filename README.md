@@ -1,4 +1,5 @@
 # LocateRecordsInLogs-AkkaHTTP
+A distributed program for locating requested records in the log files using Akka-HTTP.
 ---
 Name: Karan Malhotra
 ---
