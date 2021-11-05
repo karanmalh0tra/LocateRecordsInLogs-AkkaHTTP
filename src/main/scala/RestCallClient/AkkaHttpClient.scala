@@ -3,7 +3,7 @@ package RestCallClient
 import HelperUtils.{CreateLogger, ObtainConfigReference}
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model._
+import akka.http.scaladsl.model.{HttpMethods, HttpRequest, HttpResponse}
 import akka.util.ByteString
 import com.typesafe.config.Config
 import org.slf4j.Logger
@@ -12,6 +12,7 @@ import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
 object AkkaHttpClient {
+
   /* intialize logger and configs */
   val logger: Logger = CreateLogger(classOf[AkkaHttpClient.type])
   val config: Config = ObtainConfigReference("REST") match {
@@ -24,11 +25,13 @@ object AkkaHttpClient {
   val dT: String = config.getString("REST.delta_time")
 
   implicit val system: ActorSystem = ActorSystem() // Akka actors
+
   import system.dispatcher // "thread pool"
 
 
   def sendRequest(): Unit = {
     /* form the GET request to be sent to the API Gateway */
+    logger.info("T is "+T+" and dT is "+dT)
     val request = HttpRequest(
       method = HttpMethods.GET,
       uri = s"$URL?T=$T&dT=$dT"
