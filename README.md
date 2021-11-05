@@ -13,7 +13,7 @@ Name: Karan Malhotra
 + Java 11.0.11
 + Scala 2.13.6
 + SBT Script Version 1.5.5
-+ Other dependencies exist in build.sbt and scalapb.sbt
++ Other dependencies exist in build.sbt
 + IntelliJ IDEA Ultimate
 + AWS API Gateway
 + AWS Lambda
