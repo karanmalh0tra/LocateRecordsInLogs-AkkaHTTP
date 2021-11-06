@@ -16,10 +16,14 @@ class ConfigTest extends AnyFlatSpec with Matchers{
     configfile.getString("REST.delta_time").split(':')  should have length 3
   }
 
+  it should "check if the entire rest url is correct" in {
+    configfile.getString("REST.rest_url").split('/') should have length 5
+  }
+
   "Lambda API" should "perform check of logs" in {
-    val T = configfile.getString("time")
-    val dT = configfile.getString("delta_time")
-    val responseAWS = scala.io.Source.fromURL(configfile.getString("aws_url")+"?T="+T+"&dT="+dT)
+    val T = configfile.getString("REST.time")
+    val dT = configfile.getString("REST.delta_time")
+    val responseAWS = scala.io.Source.fromURL(configfile.getString("REST.rest_url")+"?T="+T+"&dT="+dT)
     val json = responseAWS.mkString.parseJson.asJsObject
     val ans = json.fields("isPresent").toString()
     assert(json.fields("isPresent").toString() == "\"True\"")
