@@ -13,7 +13,7 @@ Name: Karan Malhotra
 + Java 11.0.11
 + Scala 2.13.6
 + SBT Script Version 1.5.5
-+ Other dependencies exist in build.sbt and scalapb.sbt
++ Other dependencies exist in build.sbt
 + IntelliJ IDEA Ultimate
 + AWS API Gateway
 + AWS Lambda
@@ -57,4 +57,11 @@ When logs are not present:
 When logs are present:
 ![image](https://user-images.githubusercontent.com/22276682/140574082-5e064c07-dc87-49a6-befc-66c27a7c1337.png)
 
+## Other Repos
+[Lambda Function](https://github.com/karanmalh0tra/BinarySearchOnLogs-AWSLambda)
+[gRPC in Scala](https://github.com/karanmalh0tra/LocatingRecordsInLogs-gRPC)
+
 Video Link:
+- Deploy Log File Generator on EC2: https://youtu.be/WQyLCHB2SJ8
+- Create AWS Lambda Function and API Gateway: https://youtu.be/j4bUHBNmxhg
+- Execution of Akka-HTTP and gRPC: https://youtu.be/w6pSpabMkBg
