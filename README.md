@@ -40,9 +40,10 @@ Name: Karan Malhotra
 
 ## Test Cases
 1. Tests if URL is https or not.
-2. Check the format of Time
-3. Check the format of deltaTime
-4. Perform check of logs to see if the GET Request to the API Gateway is successful or not
+2. Check the format of Time.
+3. Check the format of deltaTime.
+4. Check the format of aws api gateway url.
+5. Perform check of logs to see if the GET Request to the API Gateway is successful or not.
 
 ## Overview
 This project covers the Akka HTTP Client called made to the AWS API Gateway which triggers the Lambda Function.<br/>
